@@ -1,0 +1,37 @@
+<po-page-edit
+  p-title="Novo Usuário"
+  [p-breadcrumb]="breadcrumb"
+>
+<form [formGroup]="form">
+    <div class="po-row">
+      <div class="po-row">
+        <po-input [p-no-autocomplete]="autocomplet" p-required=true class="po-md-6" name="name" formControlName="name" p-label="Nome"> </po-input>
+
+
+        <po-input [p-no-autocomplete]="autocomplet" p-required=true class="po-md-6" name="email" formControlName="email" p-label="Email"> </po-input>
+      </div>
+
+      <div class="po-row">
+        <po-password [p-no-autocomplete]="autocomplet" p-required=true class="po-md-6" name="password" formControlName="password" p-label="Senha"></po-password>
+        <po-password [p-no-autocomplete]="autocomplet" p-required=true class="po-md-6" name="senhacorreta" formControlName="senhacorreta" p-label="Confirme a senha"></po-password>
+
+
+      </div>
+
+      <po-button class="po-pb-3 po-pt-3 po-md-3" p-label="Salvar Usuario" (p-click)="salvarUsario()"
+      [p-disabled]="form.get('password')?.value!=form.get('senhacorreta')?.value">
+      </po-button>
+    </div>
+  </form>
+</po-page-edit>
+
+<ng-template #changePasswordBlock>
+  <po-page-change-password
+    p-logo="https://via.placeholder.com/160x64?text=MAIN+LOGO"
+    p-secondary-logo="https://via.placeholder.com/80x24?text=SECONDARY+LOGO"
+    [p-url-back]="url"
+    [p-url-home]="url"
+    (p-submit)="onSubmit()"
+  >
+  </po-page-change-password>
+</ng-template>

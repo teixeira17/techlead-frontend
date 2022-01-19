@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+
+    <po-page-login  (p-login-submit)="loginSubmit($event)"
+    [p-recovery]="passwordRecovery"
+    p-register-url="/novo-usuario">       
+    
+</po-page-login>
+ 
+</form>
+<po-modal #modalSalvarUsuario p-title="Novo Usuário" [p-primary-action]="salvarCadastro" [p-secondary-action]="cancelarCadastro">
+    <form [formGroup]="formNew">
+      <div class="po-row">
+        <po-input class="po-md-6" formControlName="email" p-label="Email"> </po-input>
+        <po-password class="po-md-6" formControlName="password" p-label="Senha"> </po-password>      
+      </div>
+    </form>
+</po-modal>

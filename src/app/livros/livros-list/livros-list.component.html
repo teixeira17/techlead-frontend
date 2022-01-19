@@ -1,0 +1,39 @@
+<po-page-dynamic-search p-title="Livros" 
+[p-breadcrumb]="breadcrump"
+(p-quick-search)="onQuickSearch($event)"
+(p-change-disclaimers)="onQuickSearch($event)">
+<div class="po-pb-2">
+    <div class="po-mb-1">
+        <po-button p-label="Novo Livro" (p-click)="novoLivro()" p-icon="add"></po-button>
+      </div>
+    <po-table p-container="shadow" [p-columns]="columns" [p-items]="items" [p-actions]="actionsTable"></po-table>
+</div>
+</po-page-dynamic-search>
+
+<po-modal #modalSalvarLivro p-title="Novo Livro" [p-primary-action]="salvarCadastro" [p-secondary-action]="cancelarCadastro">
+  <form [formGroup]="form">
+    <div class="po-row">
+      <po-input class="po-md-6" formControlName="nome" p-label="Nome"> </po-input>
+      <po-input class="po-md-6" formControlName="autor" p-label="Autor"> </po-input>      
+    </div>
+  </form>
+</po-modal>
+
+<po-modal #modalEdicaoLivro p-title="Editar Livro" [p-primary-action]="editarCadastroLivro" [p-secondary-action]="cancelarCadastroLivro">
+  <form [formGroup]="form">
+    <div class="po-row">
+      <po-input class="po-md-1" formControlName="id" p-label="ID" p-disabled> </po-input>
+      <po-input class="po-md-6" formControlName="nome" p-label="Nome"> </po-input>
+      <po-input class="po-md-6" formControlName="autor" p-label="Autor"> </po-input>
+      
+    </div>
+  </form>
+</po-modal>
+
+<po-modal #modalExcluirLivro p-title="Excluir Livro" [p-primary-action]="excluirCadastroLivro" [p-secondary-action]="cancelarExclusaoLivro">
+  <form [formGroup] = "form">
+    <div class="po-row">
+      <p>Deseja excluir o livro {{livro.nome}}?</p>
+    </div>
+  </form>
+</po-modal>
